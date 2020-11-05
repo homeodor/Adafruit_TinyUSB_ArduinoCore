@@ -28,7 +28,7 @@
 #include "Adafruit_USBD_Device.h"
 #include "Stream.h"
 
-class Adafruit_USBD_CDC : public Stream, public Adafruit_USBD_Interface
+class Adafruit_USBD_CDC : public Stream, Adafruit_USBD_Interface
 {
 public:
 	Adafruit_USBD_CDC(void);
@@ -40,12 +40,6 @@ public:
 	void begin(uint32_t baud_count);
 	void begin(uint32_t baud, uint8_t config);
 	void end(void);
-
-	// return line coding set by host
-	uint32_t baud(void);
-	uint8_t  stopbits(void);
-	uint8_t  paritytype(void);
-	uint8_t  numbits(void);
 
 	virtual int    available(void);
 	virtual int    peek(void);
